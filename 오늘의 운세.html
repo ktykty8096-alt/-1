@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신비로운 오늘의 운세</title>
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --bg-color: #f0f2f5;
+        }
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 380px;
+            transition: all 0.3s ease;
+        }
+        h1 { color: #2d3436; font-size: 1.8rem; margin-bottom: 0.5rem; }
+        p.subtitle { color: #636e72; margin-bottom: 2rem; }
+        
+        #fortune-display {
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background: #f9f9ff;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            padding: 15px;
+            border: 2px dashed #dcdde1;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        }
+        button:hover {
+            background-color: #a29bfe;
+            transform: translateY(-2px);
+        }
+        button:active { transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🔮 오늘의 운세</h1>
+    <p class="subtitle">오늘 당신에겐 어떤 일이 생길까요?</p>
+    
+    <div id="fortune-display">버튼을 눌러 운세를 확인하세요!</div>
+    
+    <button onclick="getFortune()">운세 확인하기</button>
+</div>
+
+<script>
+    const fortunes = [
+        "오늘은 예상치 못한 곳에서 행운이 찾아올 거예요. 놓치지 마세요!",
+        "조금 쉬어가도 괜찮은 날입니다. 자신을 위한 시간을 가져보세요.",
+        "오랫동안 고민하던 문제의 실마리가 드디어 풀리기 시작합니다.",
+        "오늘은 주변 사람들에게 먼저 인사를 건네보세요. 좋은 인연이 닿을지도?",
+        "계획했던 일이 순조롭게 진행될 운세입니다. 자신감을 가지세요!",
+        "말 한마디로 천 냥 빚을 갚는 날입니다. 언행에 신중을 기하세요.",
+        "지갑이 두둑해질 기회가 생깁니다. 다만 지출도 주의해야 해요.",
+        "새로운 도전을 시작하기에 아주 좋은 타이밍입니다. 망설이지 마세요!",
+        "오늘은 파란색 아이템이 당신에게 행운을 가져다줄 거예요.",
+        "가까운 지인으로부터 기분 좋은 소식을 듣게 됩니다."
+    ];
+
+    function getFortune() {
+        const display = document.getElementById('fortune-display');
+        
+        // 간단한 로딩 효과
+        display.innerText = "운세를 점치는 중...";
+        
+        setTimeout(() => {
+            const randomIndex = Math.floor(Math.random() * fortunes.length);
+            display.style.opacity = 0;
+            setTimeout(() => {
+                display.innerText = fortunes[randomIndex];
+                display.style.opacity = 1;
+            }, 200);
+        }, 600);
+    }
+</script>
+
+</body>
+</html>
